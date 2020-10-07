@@ -20,7 +20,14 @@
 	<!-- 'classic' theme -->
 
 	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
 	<style type="text/css">
+		.s-color{
+			height: 30px;
+			width: 30px;
+			border: 1px dotted #bababa;
+			display: inline-block;
+		}
 		.color-preview {
 			border: 1px solid #DCDFE6;
 			margin: 2px;
@@ -288,6 +295,55 @@
 
 		</div>
 
+		<el-row v-show="active == 1">
+			<el-col :span="15">
+				<el-row  v-for="product in products">
+					<el-card style="margin-bottom: 15px; padding-right: 5px">
+					<el-row>
+					<el-col :span="6">
+						<el-image :src="product.front"></el-image>
+					</el-col>
+					<el-col :span="12">
+						<el-row>
+
+							{{ product.title }}
+
+						</el-row>
+
+					</el-col>
+					<el-col :span="6">
+						<el-input-number v-model="product.price" :min="1" :max="1000"></el-input-number>
+					</el-col>
+
+				</el-row>
+
+					<el-row>
+						<el-col :span="24">
+							<div class="s-color">
+
+							</div>
+							<div class="s-color">
+
+							</div>
+							<div class="s-color">
+
+							</div>
+							<div class="s-color">
+
+							</div>
+							<div class="s-color">
+
+							</div>
+							<el-color-picker v-model="product.color" :predefine="predefineColors" size="small"></el-color-picker>
+						</el-col>
+					</el-row>
+					</el-card>
+				</el-row>
+
+			</el-col>
+			<el-col :span="12"></el-col>
+		</el-row>
+
 		<div class="row">
 			<div style="text-align: center;" class="col-md-12">
 				<el-divider></el-divider>
@@ -329,25 +385,51 @@
 					'#aeba5e', '#8aa140', '#1f6522', '#13afa2', '#b8d5d7',
 					'#15aeda', '#a5def8', '#0f77c0', '#3469b7', '#c50404',
 				],
+				color: 'rgba(255, 69, 0, 0.68)',
+				predefineColors: [
+					'#ff4500',
+					'#ff8c00',
+					'#ffd700',
+					'#90ee90',
+					'#00ced1',
+					'#1e90ff',
+					'#c71585',
+					'rgba(255, 69, 0, 0.68)',
+					'rgb(255, 120, 0)',
+					'hsv(51, 100, 98)',
+					'hsva(120, 40, 94, 0.5)',
+					'hsl(181, 100%, 37%)',
+					'hsla(209, 100%, 56%, 0.73)',
+					'#c7158577'
+				],
 				products: [{
 						title: 'Short Sleeve Shirts',
 						front: 'img/crew_front.png',
 						back: 'img/crew_back.png',
+						price: 100,
+						color: '#5C5E60',
 					},
 					{
 						title: 'Long Sleeve Shirts',
 						front: 'img/mens_longsleeve_front.png',
 						back: 'img/mens_longsleeve_back.png',
+						price: 100,
+						color: '#5C5E60',
 					},
 					{
 						title: 'Hoodies',
 						front: 'img/mens_hoodie_front.png',
 						back: 'img/mens_hoodie_back.png',
+						price: 100,
+						color: '#5C5E60',
 					},
 					{
 						title: 'Tank tops',
 						front: 'img/mens_tank_front.png',
 						back: 'img/mens_tank_back.png',
+						price: 100,
+						color: '#5C5E60',
+
 					},
 				],
 
